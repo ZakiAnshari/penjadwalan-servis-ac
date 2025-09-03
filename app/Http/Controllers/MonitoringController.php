@@ -12,13 +12,12 @@ class MonitoringController extends Controller
 {
     public function index()
     {
-        $jadwalservice = JadwalServis::with('teknisi')->get(); // <- ini penting
-        $pelanggans = Pelanggan::all();
+        $jadwalservice = JadwalServis::with(['teknisi', 'pelanggan'])->get();
         $teknisis = Teknisi::all();
         $users = User::where('role_id', 3)->get();
+
         return view('admin.monitoring.index', compact(
             'jadwalservice',
-            'pelanggans',
             'teknisis',
             'users'
         ));
