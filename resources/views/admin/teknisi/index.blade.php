@@ -140,7 +140,7 @@
                                 <tbody>
                                     @forelse ($teknisis as $index => $item)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $teknisis->firstItem() + $loop->index }}</td>
                                             <td>{{ $item->nama }}</td>
                                             <td>{{ $item->no_hp }}</td>
                                             <td>{{ $item->spesialisasi }}</td>

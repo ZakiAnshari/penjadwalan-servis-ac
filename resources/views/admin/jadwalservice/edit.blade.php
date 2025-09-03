@@ -41,7 +41,7 @@
                                 <!-- Pelanggan -->
                                 <div class="mb-3">
                                     <label for="pelanggan_id" class="form-label">Nama Pelanggan</label>
-                                    <select name="pelanggan_id" id="pelanggan_id" class="form-control" required >
+                                    <select name="pelanggan_id" id="pelanggan_id" class="form-control" required>
                                         <option value="">-- Pilih Pelanggan --</option>
                                         @foreach ($pelanggans as $pelanggan)
                                             <option value="{{ $pelanggan->id }}"
@@ -74,10 +74,11 @@
                                         value="{{ $jadwalservice->tanggal_service }}" required>
                                 </div>
                                 <!-- Jumlah Unit -->
+                                <!-- Jumlah Unit -->
                                 <div class="mb-3">
                                     <label for="jumlah_unit" class="form-label">Jumlah Unit</label>
                                     <input type="number" name="jumlah_unit" class="form-control" id="jumlah_unit"
-                                        min="1" value="{{ $jadwalservice->jumlah_unit }}" required >
+                                        min="1" value="{{ $jadwalservice->jumlah_unit }}" required readonly>
                                 </div>
 
 
@@ -88,11 +89,11 @@
                             <!-- Kolom Kanan -->
                             <div class="col-lg-6">
 
-                                <!-- Jenis  Layanan -->
+                                <!-- Jenis Layanan -->
                                 <div class="mb-3">
                                     <label for="jenis_layanan" class="form-label">Jenis Layanan</label>
-                                    <input type="text" name="jumlah_unit" class="form-control" id="jenis_layanan"
-                                        min="1" value="{{ $jadwalservice->jenis_layanan }}" required >
+                                    <input type="text" name="jenis_layanan" class="form-control" id="jenis_layanan"
+                                        value="{{ $jadwalservice->jenis_layanan }}" required readonly>
                                 </div>
                                 <!-- Alamat Service -->
                                 <div class="mb-3">
@@ -135,6 +136,26 @@
 
 
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const pelangganSelect = document.getElementById('pelanggan_id');
+            const layananInput = document.getElementById('jenis_layanan');
+            const unitInput = document.getElementById('jumlah_unit');
+            const alamatTextarea = document.getElementById('alamat_service');
 
+            pelangganSelect.addEventListener('change', function() {
+                const selectedOption = this.options[this.selectedIndex];
+
+                const alamat = selectedOption.getAttribute('data-alamat');
+                const layanan = selectedOption.getAttribute('data-layanan');
+                const unit = selectedOption.getAttribute('data-unit');
+
+                // Isi otomatis
+                alamatTextarea.value = alamat || '';
+                layananInput.value = layanan || '';
+                unitInput.value = unit || '';
+            });
+        });
+    </script>
     @include('sweetalert::alert')
 @endsection

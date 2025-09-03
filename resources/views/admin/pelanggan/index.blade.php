@@ -151,7 +151,7 @@
                                 <tbody>
                                     @forelse ($pelanggans as $index => $item)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $pelanggans->firstItem() + $loop->index }}</td>
                                             <td>{{ $item->nama }}</td>
                                             <td>{{ $item->no_hp }}</td>
                                             <td>{{ $item->email }}</td>
