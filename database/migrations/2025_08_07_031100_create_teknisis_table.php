@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('teknisis', function (Blueprint $table) {
             $table->id();
             $table->string('nama', 100);
-            $table->string('no_hp', 20);
+            $table->string('no_hp', 15);
             $table->string('spesialisasi', 100)->nullable();
             $table->text('alamat');
             $table->enum('status', ['Aktif', 'Tidak Aktif'])->default('Aktif');

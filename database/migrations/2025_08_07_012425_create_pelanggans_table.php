@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('jenis_layanan', 100);
             $table->integer('jumlah_unit');
             $table->text('alamat');
-            $table->string('no_hp', 20);
+            $table->string('no_hp', 15);
             $table->string('email', 100)->nullable();
             $table->text('catatan')->nullable();
             $table->timestamps();

@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('jenis_layanan', 100);
             $table->integer('jumlah_unit'); // <- sebaiknya integer karena jumlah unit angka
             $table->text('catatan')->nullable(); // <- ditambahkan agar sesuai model
-            $table->string('status');
+            $table->string('status',50);
 
             $table->timestamps();
 
